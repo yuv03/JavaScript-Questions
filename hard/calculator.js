@@ -17,14 +17,46 @@
 */
 
 class Calculator {
-  constructor(result){
-    this.result = result
+  constructor() {
+    this.result = 0;
   }
 
-  add(num){
+  add(num) {
     this.result += num;
   }
 
+  subtract(num) {
+    this.result -= num;
+  }
+
+  multiply(num) {
+    this.result *= num;
+  }
+
+  divide(num) {
+    if(num===0){
+      throw new Error("Cannot divide by zero");
+    }
+    this.result /= num;
+  }
+
+  clear() {
+    this.result = 0;
+  }
+
+  getResult() {
+    return this.result
+  }
+
+  calculate(str) {
+    this.result = eval(str);
+    if (!isFinite(this.result)) {
+      throw new Error('Invalid operation: Division by zero');
+    }
+  }
 }
+
+
+
 
 module.exports = Calculator;
